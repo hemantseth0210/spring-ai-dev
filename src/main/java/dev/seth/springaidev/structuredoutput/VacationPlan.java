@@ -1,4 +1,4 @@
-package dev.seth.springaidev.output;
+package dev.seth.springaidev.structuredoutput;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package dev.seth.springaidev.output;
+package dev.seth.springaidev.structuredoutput;
 
 import java.util.List;
 

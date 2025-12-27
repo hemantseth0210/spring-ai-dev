@@ -1,4 +1,4 @@
-package dev.seth.springaidev.byod;
+package dev.seth.springaidev.promptstuffing;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;

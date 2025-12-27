@@ -6,7 +6,7 @@ import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
-import org.springframework.ai.vectorstore.SimpleVectorStore;
+//import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,28 +27,28 @@ public class RagConfiguration {
     @Value("classpath:/data/modelsdata.json")
     private Resource dataFile;
 
-    @Bean
-    SimpleVectorStore simpleVectorStore(EmbeddingModel embeddingModel){
-        SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
-        File vectorStoreFile = getVectorStoreFile();
-
-        if(vectorStoreFile.exists()){
-            log.info("Vector Store already exists at {}", vectorStoreFile.getAbsolutePath());
-            simpleVectorStore.load(vectorStoreFile);
-        } else {
-            log.info("Create Vector Store at {}", vectorStoreFile.getAbsolutePath());
-            TextReader textReader = new TextReader(dataFile);
-            textReader.getCustomMetadata().put("filename", "models.txt");
-            List<Document> documents = textReader.get();
-            TokenTextSplitter tokenTextSplitter = new TokenTextSplitter();
-            List<Document> splitDocuments = tokenTextSplitter.apply(documents);
-
-            simpleVectorStore.add(splitDocuments);
-            simpleVectorStore.save(vectorStoreFile);
-        }
-
-        return simpleVectorStore;
-    }
+//    @Bean
+//    SimpleVectorStore simpleVectorStore(EmbeddingModel embeddingModel){
+//        SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
+//        File vectorStoreFile = getVectorStoreFile();
+//
+//        if(vectorStoreFile.exists()){
+//            log.info("Vector Store already exists at {}", vectorStoreFile.getAbsolutePath());
+//            simpleVectorStore.load(vectorStoreFile);
+//        } else {
+//            log.info("Create Vector Store at {}", vectorStoreFile.getAbsolutePath());
+//            TextReader textReader = new TextReader(dataFile);
+//            textReader.getCustomMetadata().put("filename", "models.txt");
+//            List<Document> documents = textReader.get();
+//            TokenTextSplitter tokenTextSplitter = new TokenTextSplitter();
+//            List<Document> splitDocuments = tokenTextSplitter.apply(documents);
+//
+//            simpleVectorStore.add(splitDocuments);
+//            simpleVectorStore.save(vectorStoreFile);
+//        }
+//
+//        return simpleVectorStore;
+//    }
 
     private File getVectorStoreFile() {
         Path path = Paths.get("src","main","resources", "data");

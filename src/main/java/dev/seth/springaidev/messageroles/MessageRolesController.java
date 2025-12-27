@@ -1,6 +1,5 @@
 package dev.seth.springaidev.messageroles;
 
-import dev.seth.springaidev.memory.MemoryController;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,4 +1,4 @@
-package dev.seth.springaidev.prompt;
+package dev.seth.springaidev.messageroles;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;

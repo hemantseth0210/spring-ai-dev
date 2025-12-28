@@ -21,7 +21,7 @@ public class HelpDeskTools {
 
     private final HelpDeskTicketService service;
 
-    @Tool(name = "createTicket", description = "Create the Support Ticket")
+    @Tool(name = "createTicket", description = "Create the Support Ticket", returnDirect = true)
     String createTicket(@ToolParam(description = "Details to create a Support ticket")
                         TicketRequest ticketRequest, ToolContext toolContext) {
         String username = (String) toolContext.getContext().get("username");
@@ -37,7 +37,7 @@ public class HelpDeskTools {
         LOGGER.info("Fetching tickets for user: {}", username);
         List<HelpDeskTicket> tickets =  service.getTicketsByUsername(username);
         LOGGER.info("Found {} tickets for user: {}", tickets.size(), username);
-        // throw new RuntimeException("Unable to fetch ticket status");
+        //throw new RuntimeException("Unable to fetch ticket status");
         return tickets;
     }
 }
